@@ -48,17 +48,17 @@
 
     return {
 
-    	init: function(muteButtonSelector) {
+    	init: function(muteButtonId) {
     		createConteiner();
             
-    		if( muteButtonSelector == undefined) {
+    		if( muteButtonId == undefined) {
     			createMuteButton();
     		} else {
-    			muteButton = muteButtonSelector;	
+    			muteButton = muteButtonId;	
     		}
 
             document.getElementById(muteButton).addEventListener('click', function(){
-                gkSound.toggleMuteSounds();
+                gkSound.toggleSounds();
             });
 
     		checkLocalStorage();
@@ -190,7 +190,7 @@
     		}
     	},
 
-    	toggleMuteSounds: function() {
+    	toggleSounds: function() {
     		if(localStorage.musicStatus == "mute"){
                 isActive = true;
 				localStorage.musicStatus = "on";

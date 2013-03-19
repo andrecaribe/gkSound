@@ -1,21 +1,35 @@
 gkSound
 =======
 
-Simple HTML5 sound manager in JavaScript
+Simple HTML5 sound manager in JavaScript.
 
-How to use
-----------
+
+###How to use
 
 Sounds should be .mp3 and .ogg to work correctly on browsers.
 
-`<script type="text/javascript" src="gkSound.js"></script>
-<script type="text/javascript">
-	gkSound.init();
-	gkSound.addSound('id','path/to/sound', false, false, function(){
+    <script type="text/javascript" src="gkSound.js"></script>
+    <script type="text/javascript">
+      gkSound.init();
+      gkSound.addSound('id','path/to/sound', false, false, function() {
         console.log('Loaded!');
-    });
-    gkSound.playSound('id');
-</script>`
+      });
+      gkSound.playSound('id');
+    </script>
+  
+###Commands
+#####gkSound.init();
+#####gkSound.addSound('id','path/to/sound', isTrack, autoPlay, onLoaded);
+#####gkSound.removeSound('id');
+#####gkSound.playSound('id', override, onComplete);
+#####gkSound.pauseSound('id');
+#####gkSound.stopSound('id');
+#####gkSound.stopAllSounds();
+#####gkSound.playTrack();
+#####gkSound.stopTrack();
+#####gkSound.toggleSounds();
+
+###Roadmap
 
 - [ ] implements removeSound method
 - [ ] implements nextTrack and prevTrack methods
