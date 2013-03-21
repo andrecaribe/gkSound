@@ -64,6 +64,16 @@
     		checkLocalStorage();
     	},
 
+        hasMP3Support:function(){
+            var a = document.createElement('audio');
+            return !!(a.canPlayType && a.canPlayType('audio/mpeg;').replace(/no/, ''));
+        },
+
+        hasOGGSupport:function(){
+            var a = document.createElement('audio');
+            return !!(a.canPlayType && a.canPlayType('audio/ogg;').replace(/no/, ''));
+        },
+
     	addSound: function (id, file, isTrack, autoPlay, callback) {
     		
             var addHTML = function(){
