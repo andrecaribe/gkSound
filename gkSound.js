@@ -145,11 +145,16 @@
 
             if( isActive ) {
 
-                // Override settings
-                if( override ) { element.currentTime = 0; }
-
-                // Play sound
-                element.play();
+                if(override){
+                    try {
+                        element.play();
+                        element.currentTime = 0;
+                    } catch (e) {
+                        element.play();
+                    }
+                } else {
+                    element.play();
+                }
 
                 // On complete
                 setTimeout(function(){ hasCallback(); }, 1000 * (element.duration));
@@ -165,17 +170,20 @@
 
     	stopSound: function(id) {
             var element = document.getElementById(id);
-            element.currentTime = 0;
-            element.pause();
+            try {
+                element.play();
+                element.currentTime = 0;
+                element.pause();
+            } catch (e){
+                element.pause();
+            }
     	},
 
     	stopAllSounds: function() {
     		currentTrack = null;
 
     		for (var i = soundList.length - 1; i >= 0; i--) {
-                var element = document.getElementById(soundList[i].id);
-                element.currentTime = 0;
-                element.pause();
+                gkSound.stopSound(soundList[i].id);
     		};
     	},
 
@@ -193,9 +201,7 @@
 
     	stopTrack: function() {
     		if(currentTrack != null) {
-                var element = document.getElementById(currentTrack);
-                element.currentTime = 0;
-    			element.pause();
+                gkSound.stopSound(currentTrack);
                 currentTrack = null;
     		}
     	},
