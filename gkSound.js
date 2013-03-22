@@ -305,29 +305,33 @@
 				gkSound.stopAllSounds();
 			}
     	},
-        /*
-        setGlobalVolume: function(value, isAbsolute){
+        
+        setGlobalVolume: function(value, isRelative){
             var vol;
 
+            isRelative = !isRelative ? false : true;
+            
             globalVolume = value;
-
+            
             for (var i = soundList.length - 1; i >= 0; i--) {
-               vol = isAbsolute == false ? soundList[i].volume * globalVolume : value;
+               vol = isRelative === true ? soundList[i].volume * globalVolume : value;
                soundList[i].volume = vol;
             };
 
             for (var i = musicList.length - 1; i >= 0; i--) {
-               vol = isAbsolute == false ? musicList[i].volume * globalVolume : value;
+               vol = isRelative === true ? musicList[i].volume * globalVolume : value;
                musicList[i].volume = vol;
             };
         },
 
         getGlobalVolume: function(){
             return globalVolume;
-        },*/
+        },
 
         setVolume: function(id, value, isRelative) {
-            var vol = isRelative == true ? value*globalVolume : value;
+            isRelative = isRelative == undefined ? false : true;
+            
+            var vol = isRelative === true ? value*globalVolume : value;
             document.getElementById(id).volume = vol;
         },
 

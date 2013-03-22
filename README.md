@@ -40,6 +40,9 @@ Play any sound with id passed in parameters.
 Override sets the sound to replay even before its completion, very util to sound effects.
 onComplete trigger an event when sound is played completely.
 
+#####gkSound.playAllSound();
+To play sounds previously stopped by pauseAllSounds().
+
 #####gkSound.pauseSound('id');
 Pauses a specific sound.
 
@@ -61,6 +64,18 @@ Stops an music track.
 
 #####gkSound.toggleSounds();
 Turn on/off all sounds controlled by gkSound.
+
+#####gkSound.setGlobalVolume('id', value, isRelative);
+Sets the global volume of the gkSound. If isRelative is true, the change will be percentual, if not, all volumes have the same value passed in parameter "value".
+
+#####gkSound.getGlobalVolume();
+Gets the global volume of the gkSound.
+
+#####gkSound.setVolume('id', value, isRelative);
+Sets the volume of the sound/music. If isRelative is true, volume changes is affected by globalVolume.
+
+#####gkSound.getVolume('id');
+Gets the volume of the sound/music.
 
 #####gkSound.hasMP3Support();
 Verify if client browser supports MP3 (audio/mpeg).
