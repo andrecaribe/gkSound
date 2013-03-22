@@ -5,7 +5,8 @@
     
     var soundList = [];
     var musicList = [];
-
+    var pauseList = [];
+    var globalVolume = 1;
     var currentTrack = null;
     var conteiner;
     var muteButton;
@@ -203,6 +204,7 @@
 
             var onEnded = function() {
                 element.removeEventListener('ended', onEnded);
+                element.playing = false;
                 hasCallback( { message:"Sound played.", code:0 } );
             }
 
@@ -218,6 +220,7 @@
                 } else {
                     element.play();
                 }
+                element.playing = true;
 
                 element.addEventListener('ended', onEnded, false);
 
@@ -226,19 +229,27 @@
             }
     	},
 
+        playAllSounds: function(){
+            for (var i = pauseList.length - 1; i >= 0; i--) {
+                document.getElementById(pauseList[i]).play();
+            };
+        },
+
         pauseSound: function(id) {
             document.getElementById(id).pause();
         },
 
         pauseAllSounds: function() {
-            // Music
             if(currentTrack != null) {
                 gkSound.pauseSound(currentTrack);
+                pauseList.push(currentTrack);
             }
             
-            // Sounds
             for (var i = soundList.length - 1; i >= 0; i--) {
                 gkSound.pauseSound(soundList[i].id);
+                if( document.getElementById(soundList[i].id).playing == true ){
+                    pauseList.push(soundList[i].id);
+                }
             }
         },
 
@@ -254,13 +265,11 @@
     	},
 
     	stopAllSounds: function() {
-            // Music
             if(currentTrack != null) {
                 gkSound.stopSound(currentTrack);
                 currentTrack = null;
             }
             
-            // Sounds
     		for (var i = soundList.length - 1; i >= 0; i--) {
                 gkSound.stopSound(soundList[i].id);
     		}
@@ -296,9 +305,30 @@
 				gkSound.stopAllSounds();
 			}
     	},
+        /*
+        setGlobalVolume: function(value, isAbsolute){
+            var vol;
 
-        setVolume: function(id, value) {
-            document.getElementById(id).volume = value;
+            globalVolume = value;
+
+            for (var i = soundList.length - 1; i >= 0; i--) {
+               vol = isAbsolute == false ? soundList[i].volume * globalVolume : value;
+               soundList[i].volume = vol;
+            };
+
+            for (var i = musicList.length - 1; i >= 0; i--) {
+               vol = isAbsolute == false ? musicList[i].volume * globalVolume : value;
+               musicList[i].volume = vol;
+            };
+        },
+
+        getGlobalVolume: function(){
+            return globalVolume;
+        },*/
+
+        setVolume: function(id, value, isRelative) {
+            var vol = isRelative == true ? value*globalVolume : value;
+            document.getElementById(id).volume = vol;
         },
 
         getVolume: function(id) {
