@@ -88,15 +88,15 @@ Verify if client browser supports OGG (audio/ogg).
 
 ###Roadmap
 
-- [X] implements removeSound method
+- [x] implements removeSound method
 - [ ] implements nextTrack and prevTrack methods
 - [ ] implements callback on track is complete
 - [ ] implements autoVolume
 - [ ] implements autoPan
-- [X] move away CSS from standard button to a new document.
+- [x] move away CSS from standard button to a new document.
 - [ ] documentation code
 - [ ] improve example
 - [ ] more examples
-- [ ] minified version
-- [ ] set sound/music volume
-- [ ] set global volume
+- [x] minified version
+- [x] set sound/music volume
+- [x] set global volume
