@@ -3,6 +3,8 @@ gkSound
 
 Simple HTML5 sound manager in JavaScript.
 
+### Example
+Visit http://www.andrecaribe.com.br/playground/gkSound/examples/example1.html
 
 ###How to use
 
@@ -96,3 +98,5 @@ Verify if client browser supports OGG (audio/ogg).
 - [ ] improve example
 - [ ] more examples
 - [ ] minified version
+- [ ] set sound/music volume
+- [ ] set global volume
