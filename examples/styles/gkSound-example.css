@@ -1,0 +1,29 @@
+body {
+	width:800px;
+}
+
+.example {
+	float: left;
+	width:800px;
+	height:auto;
+	color:#000;
+}
+
+h3 {
+	font-weight: bold;
+}
+
+.button {
+	color: #FFF;
+	background-color: #000;
+	width:100px;
+	height: 20px;
+	text-align: center;
+	margin: 2px 0 2px 20px;
+	cursor: pointer;
+}
+
+code {
+	background-color: #DDD;
+	width:500px;
+}

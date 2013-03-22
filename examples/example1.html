@@ -3,36 +3,68 @@
 	<head>
 		<title>gkSound - example 1</title>
 
+        <link rel="stylesheet" type="text/css" href="styles/gkSound-default.css">
+        <link rel="stylesheet" type="text/css" href="styles/gkSound-example.css">
         <script type="text/javascript" src="../gkSound.js"></script>
         <script type="text/javascript">
             function loaded(){
                 gkSound.init();
-                gkSound.addSound('sfx1','sounds/sfx_01', false, true, function(){
-                    console.log('sfx1 loaded');
-                });
+
+                gkSound.addSound('sfx1','sounds/sfx_01', false, true, function(status){ console.log(status); });
                 gkSound.addSound('sfx2','sounds/sfx_02', false, false);
+                gkSound.addSound('track','sounds/music_01', true, true, function(status){ console.log(status); });
 
                 document.getElementById('sfx1_play').addEventListener('click',function(){
-                    gkSound.playSound('sfx1', true);
+                    gkSound.playSound('sfx1', false, function(status){
+                        console.log(status);
+                    });
                 });
 
                 document.getElementById('sfx2_play').addEventListener('click',function(){
                     gkSound.playSound('sfx2', true, function(){
-                        console.log('sfx2 played');
                     });
                 });
             }
         </script>
-        <style type="text/css">
-            ul { position: absolute; top: 50px; }
-            li { cursor: pointer; width: 80px; height: 20px; color: #FFF; background-color: #000; text-align: center; margin: 2px 0 2px 0 }
-        </style>
 	</head>
 	<body onLoad="loaded();">
 		
         <ul>
-            <li id="sfx1_play">Play SFX 1</li>
-            <li id="sfx2_play">Play SFX 2</li>
+            <li class="button" id="sfx1_play">Play SFX 1</li>
+            <li class="button" id="sfx2_play">Play SFX 2</li>
+            <li class="button" id="track_play">Track</li>
         </ul>
+
+        <div class="example">
+            <h3>Code to SFX 1</h3>
+            <code>gkSound.addSound('sfx1','sounds/sfx_01.mp3', false, true, function(status){<br />
+                    console.log(status);<br />
+                });<br />
+                <br />
+                document.getElementById('sfx1_play').addEventListener('click',function(){<br />
+                    gkSound.playSound('sfx1', false, function(status){<br />
+                        console.log(status);<br />
+                    });<br />
+                });
+            </code>
+        </div>
+
+        <div class="example">
+            <h3>Code to SFX 2</h3>
+            <code>gkSound.addSound('sfx2','sounds/sfx_02', false, false);<br />
+                <br />
+                document.getElementById('sfx2_play').addEventListener('click',function(){<br />
+                    gkSound.playSound('sfx2', true, function(){<br />
+                    });<br />
+                });
+            </code>
+        </div>
+
+        <div class="example">
+            <h3>Code to music track</h3>
+            <code>gkSound.addSound('track','sounds/music_01', true, true);
+            </code>
+        </div>
+
 	</body>
 </html>
