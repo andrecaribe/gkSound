@@ -295,7 +295,15 @@
                 document.getElementById(muteButton).innerHTML = textOff;
 				gkSound.stopAllSounds();
 			}
-    	}
+    	},
+
+        setVolume: function(id, value) {
+            document.getElementById(id).volume = value;
+        },
+
+        getVolume: function(id) {
+            return document.getElementById(id).volume;
+        }
     }
 
 })();
