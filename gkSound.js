@@ -89,20 +89,25 @@
 
     return {
 
-    	init: function(muteButtonId) {
+    	init: function(createMuteButton, muteButtonId) {
     		createConteiner();
             
-    		if( muteButtonId == undefined) {
-    			createMuteButton();
-    		} else {
-    			muteButton = muteButtonId;	
-    		}
+            if(createMuteButton == true) {
+                if( muteButtonId == undefined) {
+                    createMuteButton();
+                } else {
+                    muteButton = muteButtonId;  
+                }
 
-            document.getElementById(muteButton).addEventListener('click', function(){
-                gkSound.toggleSounds();
-            });
+                document.getElementById(muteButton).addEventListener('click', function(){
+                    gkSound.toggleSounds();
+                });
 
-    		checkLocalStorage();
+                checkLocalStorage();
+            } else {
+                localStorage.musicStatus = "on";
+                isActive = true;
+            }
     	},
 
         hasMP3Support:function(){
