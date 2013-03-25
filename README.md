@@ -1,10 +1,10 @@
 gkSound
 =======
 
-Simple HTML5 sound manager in JavaScript.
+Simple HTML5 sound manager.
 
 ### Example
-Visit http://www.andrecaribe.com.br/playground/gkSound/examples/example1.html
+Visit http://www.andrecaribe.com.br/playground/gkSound/examples/
 
 ###How to use
 
@@ -42,7 +42,7 @@ Play any sound with id passed in parameters.
 Override sets the sound to replay even before its completion, very util to sound effects.
 onComplete trigger an event when sound is played completely.
 
-#####gkSound.playAllSound();
+#####gkSound.resumeAllSound();
 To play sounds previously stopped by pauseAllSounds().
 
 #####gkSound.pauseSound('id');
@@ -91,11 +91,11 @@ Verify if client browser supports OGG (audio/ogg).
 - [x] implements removeSound method
 - [ ] implements nextTrack and prevTrack methods
 - [ ] implements callback on track is complete
-- [ ] implements autoVolume
+- [X] implements autoVolume
 - [ ] implements autoPan
 - [x] move away CSS from standard button to a new document.
 - [ ] documentation code
-- [ ] improve example
+- [X] improve example
 - [ ] more examples
 - [x] minified version
 - [x] set sound/music volume
