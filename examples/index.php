@@ -19,7 +19,7 @@
             
             <div class="span4">
               <h2>Simple Code</h2>
-              <p>Fácil de entender, fácil de usar, fácil de modificar. Veja os exemplos no menu ao lado. </p>
+              <p>Easy to understand, easy to use, easy to modify. See the examples in the side menu. </p>
             </div><!--/span-->
 
             <div class="span4">
