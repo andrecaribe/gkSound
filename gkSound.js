@@ -6,6 +6,10 @@
     var soundList = [];
     var musicList = [];
     var pauseList = [];
+    var emitterList = [];
+    var listener = null;
+    var refreshRate = 100;
+    var refreshInterval = null;
     var globalVolume = 1;
     var currentTrack = null;
     var conteiner;
@@ -87,11 +91,43 @@
         return url;
     }
 
+    var run = function(){
+
+        var sound;
+        var distance, degree, volume, x1, y1;
+        var x2 = (listener.style.left).replace("px","");
+        var y2 = (listener.style.top).replace("px","");
+
+        for (var i = emitterList.length - 1; i >= 0; i--) {
+            for (var j = emitterList[i].sounds.length - 1; j >= 0; j--) {
+                
+                sound = emitterList[i].sounds[j];
+                
+                x1 = emitterList[i].left;
+                y1 = emitterList[i].top;
+                
+                // calculate pan/degree
+                //degree = Math.atan2( x2-x1, x2-y1 );
+
+                // calculate vol/distance with manhattam
+                distance = ( x1-x2 > 0 ? x1-x2 : x2-x1 ) + ( y1-y2 > 0 ? y1-y2 : y2-y1 );
+           
+                if(distance < emitterList[i].range) {
+                    volume = 1 - (distance/emitterList[i].range);
+                    volume = volume < 0 ? volume*-1 : volume;
+                } else {
+                    volume = 0;
+                }
+                sound.volume = volume;
+            }
+        }
+    }
+
     return {
 
     	init: function(createMuteButton, muteButtonId) {
     		createConteiner();
-            
+
             if(createMuteButton == true) {
                 if( muteButtonId == undefined) {
                     createMuteButton();
@@ -200,6 +236,28 @@
             return { message:"Sound removed.", code:0 };
         },
 
+        addSoundListener: function(element) {
+            listener = element;
+
+            if(refreshInterval != null){
+                clearInterval(refreshInterval);
+            }
+            refreshInterval = setInterval(run, refreshRate);
+        },
+
+        addSoundEmitter: function(emitter){
+            emitterList.push( emitter );
+        },
+
+        attachToSoundEmitter: function(emitter, sound){
+            for (var i = emitterList.length - 1; i >= 0; i--) {
+                if(emitterList[i].id == emitter){
+                    emitterList[i].sounds.push( document.getElementById( sound ) );
+                    break;
+                }
+            }
+        },  
+
     	playSound: function(id, override, onComplete) {
             var element = document.getElementById(id);
 
@@ -234,7 +292,7 @@
             }
     	},
 
-        playAllSounds: function(){
+        resumeAllSounds: function(){
             for (var i = pauseList.length - 1; i >= 0; i--) {
                 document.getElementById(pauseList[i]).play();
             };

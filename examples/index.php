@@ -18,20 +18,20 @@
           <div class="row-fluid">
             
             <div class="span4">
-              <h2>3D Simulation</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
+              <h2>Simple Code</h2>
+              <p>Fácil de entender, fácil de usar, fácil de modificar. Veja os exemplos no menu ao lado. </p>
             </div><!--/span-->
 
             <div class="span4">
-              <h2>Simple Code</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
+              <h2>3D Simulation</h2>
+              <p>Provides 3D simulation of sounds on 2D environments in real time. </p>
+              <p><a class="btn" href="#">View example &raquo;</a></p>
             </div><!--/span-->
 
             <div class="span4">
               <h2>Open Source</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p>gkSound has BSD license, this means you can do whatever it wants with the code. </p>
+              <p><a class="btn" href="https://github.com/andrecaribe/gkSound/blob/master/LICENSE.txt">View license &raquo;</a></p>
             </div><!--/span-->
 
           </div><!--/row-->

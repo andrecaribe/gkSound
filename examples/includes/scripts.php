@@ -1,7 +1,11 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
+<script type="text/javascript" src="js/TweenMax.min.js"></script>
+<script type="text/javascript" src="../gkSound.min.js"></script>
 <!--<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-transition.js"></script>
 <script src="js/bootstrap-alert.js"></script>
 <script src="js/bootstrap-modal.js"></script>
@@ -13,4 +17,5 @@
 <script src="js/bootstrap-button.js"></script>
 <script src="js/bootstrap-collapse.js"></script>
 <script src="js/bootstrap-carousel.js"></script>
-<script src="js/bootstrap-typeahead.js"></script>-->
+<script src="js/bootstrap-typeahead.js"></script>
+-->
