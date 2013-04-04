@@ -19,11 +19,23 @@
     var textOff = '<div class="btnImage" style="left:-100%"></div>';
 
     var createConteiner = function() {
-        document.body.innerHTML += '<div id="sounds" style="display:none"></div>';
+        var soundConteiner = document.createElement("div");
+        soundConteiner.id = "sounds";
+
+        document.body.appendChild(soundConteiner);
     }
 
     var createMuteButton = function() {
-    	document.body.innerHTML = '<div id="btnMute"><div class="btnImage"></div></div>' + document.body.innerHTML;
+        var muteConteiner = document.createElement("div");
+            muteConteiner.id = "btnMute";
+
+        var imageMuteConteiner = document.createElement("div");
+            imageMuteConteiner.class = "btnImage";
+
+        muteConteiner.appendChild(imageMuteConteiner);
+        
+        document.body.appendChild(muteConteiner);
+
         muteButton = 'btnMute';
     }
 
@@ -125,10 +137,10 @@
 
     return {
 
-    	init: function(createMuteButton, muteButtonId) {
+    	init: function(autoCreateMuteButton, muteButtonId) {
     		createConteiner();
 
-            if(createMuteButton == true) {
+            if(autoCreateMuteButton == true) {
                 if( muteButtonId == undefined) {
                     createMuteButton();
                 } else {
