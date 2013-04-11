@@ -302,15 +302,16 @@
             var i;
 
             for (i = emitterList.length - 1; i >= 0; i--) {
-                if (emitterList[i].id == emitter) {
+                if (emitterList[i].id === emitter) {
                     emitterList[i].sounds.push(document.getElementById(sound));
                     break;
                 }
             }
         },
 
-        playSound: function(id, override, onComplete) {
+        playSound: function(id, override, onComplete, ignoreMute) {
             var element = document.getElementById(id),
+                ignoreMute = ignoreMute === undefined ? false : ignoreMute,
 
                 hasCallback = function(status) {
                     if (onComplete !== undefined) {
@@ -324,7 +325,7 @@
                     hasCallback({message: "Sound played.", code: 0});
                 };
 
-            if (isActive) {
+            if (isActive || ignoreMute) {
 
                 if (override) {
                     try {
