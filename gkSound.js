@@ -1,7 +1,7 @@
 /** 
  * Software License Agreement (BSD License)
  * 
- * Copyright (c) 2007, André Coelho Caribé de Azevedo. All rights reserved.
+ * Copyright (c) 2013, André Coelho Caribé de Azevedo. All rights reserved.
  * 
  * Redistribution and use of this software in source and binary forms, with or
  * without modification, are permitted provided that the following conditions

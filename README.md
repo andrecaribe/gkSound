@@ -1,9 +1,9 @@
-gkSound
+Gamekaze Sound
 =======
 
 Simple HTML5 sound manager.
 
-### Example
+### Examples
 Visit http://www.andrecaribe.com.br/playground/gkSound/examples/
 
 ###How to use
@@ -37,7 +37,7 @@ Callbacks return an Object like { message:"Sound loaded.", code:0 }. These codes
 Remove sound from the page.
 If sound not exists return an erro code.
 
-#####gkSound.playSound('id', override, onComplete);
+#####gkSound.playSound('id', override, onComplete, ignoreMute);
 Play any sound with id passed in parameters.
 Override sets the sound to replay even before its completion, very util to sound effects.
 onComplete trigger an event when sound is played completely.
@@ -84,19 +84,3 @@ Verify if client browser supports MP3 (audio/mpeg).
 
 #####gkSound.hasOGGSupport();
 Verify if client browser supports OGG (audio/ogg).
-
-
-###Roadmap
-
-- [x] implements removeSound method
-- [ ] implements nextTrack and prevTrack methods
-- [ ] implements callback on track is complete
-- [X] implements autoVolume
-- [ ] implements autoPan
-- [x] move away CSS from standard button to a new document.
-- [ ] documentation code
-- [X] improve example
-- [ ] more examples
-- [x] minified version
-- [x] set sound/music volume
-- [x] set global volume
