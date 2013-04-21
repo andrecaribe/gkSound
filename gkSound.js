@@ -56,7 +56,7 @@
             document.body.appendChild(soundConteiner);
         },
 
-        createMuteButton = function() {
+        createMuteButton = function(conteiner) {
             var muteConteiner = document.createElement("div"),
                 imageMuteConteiner = document.createElement("div");
 
@@ -65,20 +65,39 @@
 
             muteConteiner.appendChild(imageMuteConteiner);
 
-            document.body.appendChild(muteConteiner);
-
+            if (conteiner !== undefined) {
+                conteiner.appendChild(muteConteiner);
+            } else {
+                document.body.appendChild(muteConteiner);
+            }
+            
             muteButton = 'btnMute';
+
+            document.getElementById(muteButton).addEventListener('click', function() {
+                gkSound.toggleSounds();
+            });
+            
+        },
+
+        changeMuteButtonText = function(isEnable) {
+             if (muteButton !== undefined) {
+                if (isEnable === true) {
+                    document.getElementById(muteButton).innerHTML = textOn;
+                } else {
+                    document.getElementById(muteButton).innerHTML = textOff;
+                }
+            }
         },
 
         checkLocalStorage = function() {
             if (localStorage.musicStatus !== "" || localStorage.musicStatus !== null) {
                 if (localStorage.musicStatus === "mute") {
                     gkSound.stopAllSounds();
-                    document.getElementById(muteButton).innerHTML = textOff;
+                    changeMuteButtonText(false);
                     isActive = false;
                 } else {
                     localStorage.musicStatus = "on";
-                    document.getElementById(muteButton).innerHTML = textOn;
+                    changeMuteButtonText(true);
                     isActive = true;
                 }
             }
@@ -173,25 +192,14 @@
 
     return {
 
-        init: function(autoCreateMuteButton, muteButtonId) {
+        init: function(autoCreateMuteButton, muteButtonConteiner) {
             createConteiner();
 
             if (autoCreateMuteButton === true) {
-                if (muteButtonId === undefined) {
-                    createMuteButton();
-                } else {
-                    muteButton = muteButtonId;
-                }
-
-                document.getElementById(muteButton).addEventListener('click', function() {
-                    gkSound.toggleSounds();
-                });
-
-                checkLocalStorage();
-            } else {
-                localStorage.musicStatus = "on";
-                isActive = true;
+                createMuteButton(muteButtonConteiner);
             }
+
+            checkLocalStorage();
         },
 
         hasMP3Support: function() {
@@ -205,6 +213,10 @@
         },
 
         addSound: function (id, file, isTrack, autoPlay, callback) {
+            if (typeof id !== 'string' || typeof file !== 'string') {
+                console.info('Warning! Please, check parameters to gkSound.addSound method.');
+                return null;
+            }
 
             var audio,
 
@@ -245,6 +257,7 @@
 
                 audio.addEventListener('error', function() {
                     gkSound.removeSound(id);
+                    console.error('Error! Code: ' + audio.error.code + '. For more information see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-error');
                     hasCallback({message: "Error! For more information see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-error", code: audio.error.code});
                 }, false);
             } else {
@@ -276,7 +289,7 @@
             }
 
             if (audio === undefined) {
-                //throw "Error! Sound not exists.";
+                console.info('Warning! Sound not exists to be removed by gkSound.removeSound method.');
                 return {message: "Sound not exists.", code: -1};
             }
 
@@ -420,12 +433,12 @@
             if (localStorage.musicStatus === "mute") {
                 isActive = true;
                 localStorage.musicStatus = "on";
-                document.getElementById(muteButton).innerHTML = textOn;
+                changeMuteButtonText(true);
                 gkSound.playTrack();
             } else {
                 isActive = false;
                 localStorage.musicStatus = "mute";
-                document.getElementById(muteButton).innerHTML = textOff;
+                changeMuteButtonText(false);
                 gkSound.stopAllSounds();
             }
         },
