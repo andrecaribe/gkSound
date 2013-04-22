@@ -62,45 +62,58 @@
         <div class="container-fluid">
 
             <div class="span9">
-                <h3>Simple Example</h3>
+                <h3>Simple Example - Step by step</h3>
+                <p>1. Import gkSound script.</p>
+                <pre>&lt;script type=&quot;text/javascript&quot; src=&quot;gkSound.js&quot;&gt;&lt;/script&gt;</pre>
+                <p>2. Initialize gkSound module.</p>
+                <pre>gkSound.init();</pre>
+                <p>3. Add your sound. Choose an ID and a name of the sound file. To listen on all browsers make sure that sound has MP3 and OGG versions of the same file name.</p>
+                <pre>gkSound.addSound('sfx', 'sounds/sfx-01');</pre>
+                <p>4. Play sound.</p>
+                <pre>gkSound.playSound('sfx');</pre>
+                <p>See complete code and callback function of gkSound.playSound()</p>
                 <p>At the end of the sound, call the callback with status code of 0. If the sound can not be touched calls the callback with status code equal to -1.</p>
-                <pre>gkSound.init(false);
+                <pre>
+&lt;script type=&quot;text/javascript&quot; src=&quot;gkSound.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;
+gkSound.init();
 
-gkSound.addSound('sfx', 'sounds/sfx-01.mp3', false, false);
+gkSound.addSound('sfx', 'sounds/sfx-01.mp3');
 
-var element = document.getElementById('play');
-element.addEventListener("click", function() {
+var elementPlay = document.getElementById('play');
+elementPlay.addEventListener("click", function() {
     gkSound.playSound('sfx', false, function(status) {
         console.log("message: " + status.message + " code: " + status.code);
     });
-}, false);</pre>
+});
+&quot;&gt;&lt;/script&gt;
+</pre>
                 <button id="play" class="btn btn-danger" type="button">
-                    <i class="icon-play icon-white"></i>
-                Play</button>
+                    <i class="icon-play icon-white"></i> Play
+                </button>
         </div><!--/span-->
       </div><!--/row-->
 
             <hr>
             <footer>
-              <!--<p>&copy; Gamekaze 2013</p>-->
+              <p>Copyright &copy; 2013, André Coelho Caribé de Azevedo. All rights reserved. <a href="https://github.com/andrecaribe/gkSound/blob/master/LICENSE.txt">See BSD license.</a></p>
             </footer>
         </div><!--/.container-fluid-->
-
         
         <!--<script src="js/jquery.js"></script>-->
         <!--<script src="js/bootstrap.min.js"></script>-->
         <script type="text/javascript" src="../gkSound.min.js"></script>
         <script type="text/javascript">
-            gkSound.init(false);
+            gkSound.init();
 
-            gkSound.addSound('sfx', 'sounds/sfx-01.mp3', false, false);
+            gkSound.addSound('sfx', 'sounds/sfx-01');
 
-            var element = document.getElementById('play');
-            element.addEventListener("click", function() {
+            var elementPlay = document.getElementById('play');
+            elementPlay.addEventListener("click", function() {
                 gkSound.playSound('sfx', false, function(status) {
                     console.log("message: " + status.message + " code: " + status.code);
                 });
-            }, false);  
+            });
         </script>
     </body>
 </html>

@@ -4,30 +4,44 @@ Gamekaze Sound
 Simple HTML5 sound manager.
 
 ### Examples
-Visit http://www.andrecaribe.com.br/playground/gkSound/examples/
+Live examples coming soon.
 
 ###How to use
 
-Sounds should be .mp3 and .ogg to work correctly on browsers.
+#####1. Import gkSound script.
+	<script type="text/javascript" src="../gkSound.min.js"></script>
+#####2. Initialize gkSound module.
+	gkSound.init();
+#####3. Add your sound.
+Choose an ID and a name of the sound file. To listen on all browsers make sure that sound has MP3 and OGG versions of the same file name.
+	gkSound.addSound('sfx', 'sounds/sfx-01');
+#####4. Play sound.
+	gkSound.playSound('sfx');
 
-    <link rel="stylesheet" type="text/css" href="styles/gkSound-default.css">
-    <script type="text/javascript" src="gkSound.js"></script>
+See complete code and callback function of gkSound.playSound()
+At the end of the sound, call the callback with status code of 0. If the sound can not be touched calls the callback with status code equal to -1.
+	<script type="text/javascript" src="../gkSound.min.js"></script>
     <script type="text/javascript">
-      gkSound.init();
-      gkSound.addSound('id','path/to/sound', false, false, function(status) {
-        console.log(status.message);
-      });
-      gkSound.playSound('id');
+    gkSound.init();
+
+    gkSound.addSound('sfx', 'sounds/sfx-01');
+
+    var elementPlay = document.getElementById('play');
+    elementPlay.addEventListener("click", function() {
+        gkSound.playSound('sfx', false, function(status) {
+            console.log("message: " + status.message + " code: " + status.code);
+        });
+    });
     </script>
     
 
 ###Commands
 
-#####gkSound.init();
+#####gkSound.init([autoCreateMuteButton, muteButtonConteiner]);
 Need to use other funcitions properly. Must be called before all other gkSound functions.
 This function create a default mute/unmute button and a hidden conteiner to storage sound tags.
 
-#####gkSound.addSound('id','path/to/sound', isTrack, autoPlay, callback);
+#####gkSound.addSound('id','path/to/sound' [, isTrack, autoPlay, callback]);
 Simple away to add sound in your page. Supports MP3 and OGG files.
 You need to pass some parameters: id, path/to/file, isTrack, autoPlay and callback function.
 If you dont pass file extension on "path/to/sound", gkSound chooses MP3 - if browser support it - or OGG - if not.
@@ -37,7 +51,7 @@ Callbacks return an Object like { message:"Sound loaded.", code:0 }. These codes
 Remove sound from the page.
 If sound not exists return an erro code.
 
-#####gkSound.playSound('id', override, onComplete, ignoreMute);
+#####gkSound.playSound('id' [, override, onComplete, ignoreMute]);
 Play any sound with id passed in parameters.
 Override sets the sound to replay even before its completion, very util to sound effects.
 onComplete trigger an event when sound is played completely.
@@ -64,16 +78,25 @@ Plays an music track.
 #####gkSound.stopTrack();
 Stops an music track.
 
+#####addSoundListener('elementId');
+Adds a listener to receive a sound.
+
+#####addSoundEmitter('emitterId');
+Adds a sound emissor.
+
+#####attachToSoundEmitter('emitterId', 'soundId');
+Link sound to emitter.
+
 #####gkSound.toggleSounds();
 Turn on/off all sounds controlled by gkSound.
 
-#####gkSound.setGlobalVolume('id', value, isRelative);
+#####gkSound.setGlobalVolume('id', value [, isRelative]);
 Sets the global volume of the gkSound. If isRelative is true, the change will be percentual, if not, all volumes have the same value passed in parameter "value".
 
 #####gkSound.getGlobalVolume();
 Gets the global volume of the gkSound.
 
-#####gkSound.setVolume('id', value, isRelative);
+#####gkSound.setVolume('id', value [, isRelative]);
 Sets the volume of the sound/music. If isRelative is true, volume changes is affected by globalVolume.
 
 #####gkSound.getVolume('id');
