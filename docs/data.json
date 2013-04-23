@@ -1,0 +1,324 @@
+{
+    "project": {
+        "name": "gkSound Code Documentation",
+        "version": "0.0.30",
+        "url": "https://github.com/andrecaribe/gkSound"
+    },
+    "files": {
+        "gkSound.js": {
+            "name": "gkSound.js",
+            "modules": {},
+            "classes": {
+                "gkSound": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "gkSound": {
+            "name": "gkSound",
+            "shortname": "gkSound",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "gkSound.js",
+            "line": 34
+        }
+    },
+    "classitems": [
+        {
+            "file": "gkSound.js",
+            "line": 1,
+            "description": "Software License Agreement (BSD License)\n\nCopyright (c) 2013, André Coelho Caribé de Azevedo. All rights reserved.\n\nRedistribution and use of this software in source and binary forms, with or\nwithout modification, are permitted provided that the following conditions\nare met:\n\nRedistributions of source code must retain the above copyright notice, this\nlist of conditions and the following disclaimer.\n\nRedistributions in binary form must reproduce the above copyright notice,\nthis list of conditions and the following disclaimer in the documentation\nand/or other materials provided with the distribution.\n\nThe name of André Coelho Caribé de Azevedo may not be used to endorse or\npromote products derived from this software without specific prior written\npermission of André Coelho Caribé de Azevedo.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 200,
+            "description": "Must be called before all other gkSound functions.",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "autoCreateMuteButton",
+                    "description": "Enable to create a default mute button.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "muteButtonConteiner",
+                    "description": "Id of an element.",
+                    "type": "String"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 217,
+            "description": "Verify if browser supports MP3 file.",
+            "itemtype": "method",
+            "name": "hasMP3Support",
+            "return": {
+                "description": "Return true if browser supports.",
+                "type": "Boolean"
+            },
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 228,
+            "description": "Verify if browser supports OGG file.",
+            "itemtype": "method",
+            "name": "hasOGGSupport",
+            "return": {
+                "description": "Return true if browser supports",
+                "type": "Boolean"
+            },
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 239,
+            "description": "Load sound. Simple away to add sound in your page. Supports MP3 and OGG files.",
+            "itemtype": "method",
+            "name": "addSound",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Id to new Audio element.",
+                    "type": "String"
+                },
+                {
+                    "name": "file",
+                    "description": "File name can be with or without extension name.",
+                    "type": "String"
+                },
+                {
+                    "name": "isTrack",
+                    "description": "Boolean default false. Set to true to play sound with loop.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "autoPlay",
+                    "description": "Boolean default false. Set to true to play sound when is loaded.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callbacks return an Object like { message:\"Sound loaded.\", code:0 }. These codes are according HTML5 specifications.",
+                    "type": "Function"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 302,
+            "description": "Remove sound from the page.",
+            "itemtype": "method",
+            "name": "removeSound",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "of Audio element.",
+                    "type": "String"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 365,
+            "description": "Load sound. Simple away to add sound in your page. Supports MP3 and OGG files.",
+            "itemtype": "method",
+            "name": "playSound",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Id of Audio element.",
+                    "type": "String"
+                },
+                {
+                    "name": "override",
+                    "description": "Boolean default false. Set to true to play sound from start.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "callback",
+                    "description": "Callbacks return an Object like { message:\"Sound played.\", code:0 }. Code will be -1 if sound not played.",
+                    "type": "Function"
+                },
+                {
+                    "name": "ignoreMute",
+                    "description": "Boolean default false. Set to true to play sound ignoring mute settings.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 411,
+            "description": "Play all sounds previously stopped by pauseAllSounds.",
+            "itemtype": "method",
+            "name": "resumeAllSounds",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 424,
+            "description": "Pause an sound.",
+            "itemtype": "method",
+            "name": "pauseSound",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Id of Audio element.",
+                    "type": "String"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 434,
+            "description": "Pause all sounds.",
+            "itemtype": "method",
+            "name": "pauseAllSounds",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 455,
+            "description": "Stop an sound.",
+            "itemtype": "method",
+            "name": "stopSound",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Id of Audio element.",
+                    "type": "String"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 472,
+            "description": "Stop all sounds.",
+            "itemtype": "method",
+            "name": "stopAllSounds",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 490,
+            "description": "Play track.",
+            "itemtype": "method",
+            "name": "playTrack",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 506,
+            "description": "Stop track.",
+            "itemtype": "method",
+            "name": "stopTrack",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 518,
+            "description": "Toggle mute option.",
+            "itemtype": "method",
+            "name": "toggleSounds",
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 537,
+            "description": "Set global volume.",
+            "itemtype": "method",
+            "name": "setGlobalVolume",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Number between 0 and 1.",
+                    "type": "Number"
+                },
+                {
+                    "name": "isRelative",
+                    "description": "Boolean default false. Set to true to apply value like a relative.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 563,
+            "description": "Get global volume.",
+            "itemtype": "method",
+            "name": "getGlobalVolume",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 573,
+            "description": "Set volume.",
+            "itemtype": "method",
+            "name": "setVolume",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Id of Audio element.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Number between 0 and 1.",
+                    "type": "Number"
+                },
+                {
+                    "name": "isRelative",
+                    "description": "Boolean default false. Set to true to apply value like a relative.",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "gkSound"
+        },
+        {
+            "file": "gkSound.js",
+            "line": 588,
+            "description": "Get volume.",
+            "itemtype": "method",
+            "name": "getVolume",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Id of Audio element.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "gkSound"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nSoftware License Agreement (BSD License)\n\nCopyright (c) 2013, André Coelho Caribé de Azevedo. All rights reserved.\n\nRedistribution and use of this software in source and binary forms, with or\nwithout modification, are permitted provided that the following conditions\nare met:\n\nRedistributions of source code must retain the above copyright notice, this\nlist of conditions and the following disclaimer.\n\nRedistributions in binary form must reproduce the above copyright notice,\nthis list of conditions and the following disclaimer in the documentation\nand/or other materials provided with the distribution.\n\nThe name of André Coelho Caribé de Azevedo may not be used to endorse or\npromote products derived from this software without specific prior written\npermission of André Coelho Caribé de Azevedo.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.",
+            "line": " gkSound.js:1"
+        }
+    ]
+}

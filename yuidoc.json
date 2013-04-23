@@ -1,0 +1,11 @@
+{
+    "name": "gkSound Code Documentation",
+    "version": "0.0.30",
+    "url": "https://github.com/andrecaribe/gkSound",
+    "options": {
+        "linkNatives": "true",
+        "outdir": "docs",
+        "exclude": "test,examples",
+        "paths": "."
+    }
+}

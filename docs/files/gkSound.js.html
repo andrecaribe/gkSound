@@ -1,3 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>gkSound.js - gkSound Code Documentation</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="gkSound Code Documentation"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.30</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/gkSound.html">gkSound</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: gkSound.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
 /** 
  * Software License Agreement (BSD License)
  * 
@@ -18,7 +106,7 @@
  * promote products derived from this software without specific prior written
  * permission of André Coelho Caribé de Azevedo.
  * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
@@ -37,7 +125,7 @@
   */
  var gkSound = (function() {
 
-    "use strict";
+    &quot;use strict&quot;;
 
     var soundList = [],
         musicList = [],
@@ -51,22 +139,22 @@
         conteiner,
         muteButton,
         isActive,
-        textOn = '<div class="btnImage" style="left:0"></div>',
-        textOff = '<div class="btnImage" style="left:-100%"></div>',
+        textOn = &#x27;&lt;div class=&quot;btnImage&quot; style=&quot;left:0&quot;&gt;&lt;/div&gt;&#x27;,
+        textOff = &#x27;&lt;div class=&quot;btnImage&quot; style=&quot;left:-100%&quot;&gt;&lt;/div&gt;&#x27;,
 
         createConteiner = function() {
-            var soundConteiner = document.createElement("div");
-            soundConteiner.id = "sounds";
+            var soundConteiner = document.createElement(&quot;div&quot;);
+            soundConteiner.id = &quot;sounds&quot;;
 
             document.body.appendChild(soundConteiner);
         },
 
         createMuteButton = function(conteiner) {
-            var muteConteiner = document.createElement("div"),
-                imageMuteConteiner = document.createElement("div");
+            var muteConteiner = document.createElement(&quot;div&quot;),
+                imageMuteConteiner = document.createElement(&quot;div&quot;);
 
-            muteConteiner.id = "btnMute";
-            imageMuteConteiner.class = "btnImage";
+            muteConteiner.id = &quot;btnMute&quot;;
+            imageMuteConteiner.class = &quot;btnImage&quot;;
 
             muteConteiner.appendChild(imageMuteConteiner);
 
@@ -76,9 +164,9 @@
                 document.body.appendChild(muteConteiner);
             }
             
-            muteButton = 'btnMute';
+            muteButton = &#x27;btnMute&#x27;;
 
-            document.getElementById(muteButton).addEventListener('click', function() {
+            document.getElementById(muteButton).addEventListener(&#x27;click&#x27;, function() {
                 gkSound.toggleSounds();
             });
             
@@ -95,13 +183,13 @@
         },
 
         checkLocalStorage = function() {
-            if (localStorage.musicStatus !== "" || localStorage.musicStatus !== null) {
-                if (localStorage.musicStatus === "mute") {
+            if (localStorage.musicStatus !== &quot;&quot; || localStorage.musicStatus !== null) {
+                if (localStorage.musicStatus === &quot;mute&quot;) {
                     gkSound.stopAllSounds();
                     changeMuteButtonText(false);
                     isActive = false;
                 } else {
-                    localStorage.musicStatus = "on";
+                    localStorage.musicStatus = &quot;on&quot;;
                     changeMuteButtonText(true);
                     isActive = true;
                 }
@@ -112,14 +200,14 @@
             var soundExists = false,
                 i;
 
-            for (i = soundList.length - 1; i >= 0; i--) {
+            for (i = soundList.length - 1; i &gt;= 0; i--) {
                 if (soundList[i].id === id) {
                     soundExists = true;
                     break;
                 }
             }
 
-            for (i = musicList.length - 1; i >= 0; i--) {
+            for (i = musicList.length - 1; i &gt;= 0; i--) {
                 if (musicList[i].id === id) {
                     soundExists = true;
                     break;
@@ -135,21 +223,21 @@
                 type;
 
             // Select type of file by browser support
-            type = gkSound.hasMP3Support() == true ? '.mp3' : '.ogg';
+            type = gkSound.hasMP3Support() == true ? &#x27;.mp3&#x27; : &#x27;.ogg&#x27;;
 
             // Select type of file by file name
-            if (file.search(".mp3") !== -1) {
-                query = file.split('.mp3');
-                type = '.mp3';
-            } else if (file.search(".ogg") !== -1) {
-                query = file.split('.ogg');
-                type = '.ogg';
+            if (file.search(&quot;.mp3&quot;) !== -1) {
+                query = file.split(&#x27;.mp3&#x27;);
+                type = &#x27;.mp3&#x27;;
+            } else if (file.search(&quot;.ogg&quot;) !== -1) {
+                query = file.split(&#x27;.ogg&#x27;);
+                type = &#x27;.ogg&#x27;;
             } else {
                 query = null;
             }
 
             if (query !== null) {
-                url = query[0] + type + (query[1] ? query[1] : "");
+                url = query[0] + type + (query[1] ? query[1] : &quot;&quot;);
             } else {
                 url = file + type;
             }
@@ -165,13 +253,13 @@
                 volume,
                 x1,
                 y1,
-                x2 = (listener.style.left).replace("px", ""),
-                y2 = (listener.style.top).replace("px", ""),
+                x2 = (listener.style.left).replace(&quot;px&quot;, &quot;&quot;),
+                y2 = (listener.style.top).replace(&quot;px&quot;, &quot;&quot;),
                 i,
                 j;
 
-            for (i = emitterList.length - 1; i >= 0; i--) {
-                for (j = emitterList[i].sounds.length - 1; j >= 0; j--) {
+            for (i = emitterList.length - 1; i &gt;= 0; i--) {
+                for (j = emitterList[i].sounds.length - 1; j &gt;= 0; j--) {
 
                     sound = emitterList[i].sounds[j];
 
@@ -182,11 +270,11 @@
                     //degree = Math.atan2(x2 - x1, x2 - y1);
 
                     // calculate vol/distance with manhattam
-                    distance = (x1 - x2 > 0 ? x1 - x2 : x2 - x1) + (y1 - y2 > 0 ? y1 - y2 : y2 - y1);
+                    distance = (x1 - x2 &gt; 0 ? x1 - x2 : x2 - x1) + (y1 - y2 &gt; 0 ? y1 - y2 : y2 - y1);
 
-                    if (distance < emitterList[i].range) {
+                    if (distance &lt; emitterList[i].range) {
                         volume = 1 - (distance / emitterList[i].range);
-                        volume = volume < 0 ? volume * -1 : volume;
+                        volume = volume &lt; 0 ? volume * -1 : volume;
                     } else {
                         volume = 0;
                     }
@@ -221,8 +309,8 @@
          * @return {Boolean} Return true if browser supports.
          */
         hasMP3Support: function() {
-            var a = document.createElement('audio');
-            return !!(a.canPlayType && a.canPlayType('audio/mpeg;').replace(/no/, ''));
+            var a = document.createElement(&#x27;audio&#x27;);
+            return !!(a.canPlayType &amp;&amp; a.canPlayType(&#x27;audio/mpeg;&#x27;).replace(/no/, &#x27;&#x27;));
         },
 
         /**
@@ -232,8 +320,8 @@
          * @return {Boolean} Return true if browser supports
          */
         hasOGGSupport: function() {
-            var a = document.createElement('audio');
-            return !!(a.canPlayType && a.canPlayType('audio/ogg;').replace(/no/, ''));
+            var a = document.createElement(&#x27;audio&#x27;);
+            return !!(a.canPlayType &amp;&amp; a.canPlayType(&#x27;audio/ogg;&#x27;).replace(/no/, &#x27;&#x27;));
         },
 
         /**
@@ -244,11 +332,11 @@
          * @param {String} file File name can be with or without extension name.
          * @param {Boolean} isTrack Boolean default false. Set to true to play sound with loop.
          * @param {Boolean} autoPlay Boolean default false. Set to true to play sound when is loaded.
-         * @param {Function} callback Callbacks return an Object like { message:"Sound loaded.", code:0 }. These codes are according HTML5 specifications.
+         * @param {Function} callback Callbacks return an Object like { message:&quot;Sound loaded.&quot;, code:0 }. These codes are according HTML5 specifications.
          */
         addSound: function (id, file, isTrack, autoPlay, callback) {
-            if (typeof id !== 'string' || typeof file !== 'string') {
-                console.info('Warning! Please, check parameters to gkSound.addSound method.');
+            if (typeof id !== &#x27;string&#x27; || typeof file !== &#x27;string&#x27;) {
+                console.info(&#x27;Warning! Please, check parameters to gkSound.addSound method.&#x27;);
                 return null;
             }
 
@@ -273,29 +361,29 @@
             if (!hasSound(id)) {
 
                 audio = new Audio(getFileURL(file));
-                audio.setAttribute("id", id);
+                audio.setAttribute(&quot;id&quot;, id);
 
                 if (isTrack) {
-                    audio.setAttribute("loop", "loop");
+                    audio.setAttribute(&quot;loop&quot;, &quot;loop&quot;);
                     musicList.push(audio);
                 } else {
                     soundList.push(audio);
                 }
 
-                document.getElementById('sounds').appendChild(audio);
+                document.getElementById(&#x27;sounds&#x27;).appendChild(audio);
 
-                audio.addEventListener('canplaythrough', function() {
+                audio.addEventListener(&#x27;canplaythrough&#x27;, function() {
                     hasAutoPlay();
-                    hasCallback({message: "Sound loaded.", code: 0});
+                    hasCallback({message: &quot;Sound loaded.&quot;, code: 0});
                 }, false);
 
-                audio.addEventListener('error', function() {
+                audio.addEventListener(&#x27;error&#x27;, function() {
                     gkSound.removeSound(id);
-                    console.error('Error! Code: ' + audio.error.code + '. For more information see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-error');
-                    hasCallback({message: "Error! For more information see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-error", code: audio.error.code});
+                    console.error(&#x27;Error! Code: &#x27; + audio.error.code + &#x27;. For more information see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-error&#x27;);
+                    hasCallback({message: &quot;Error! For more information see http://www.w3.org/html/wg/drafts/html/master/embedded-content-0.html#dom-media-error&quot;, code: audio.error.code});
                 }, false);
             } else {
-                hasCallback({message: "Sound already exists.", code: -1});
+                hasCallback({message: &quot;Sound already exists.&quot;, code: -1});
             }
         },
 
@@ -310,7 +398,7 @@
             var index = 0,
                 audio;
 
-            while (audio === undefined || index < soundList.length) {
+            while (audio === undefined || index &lt; soundList.length) {
                 if (soundList[index].id === id) {
                     audio = soundList[index];
                     soundList.splice(index, 1);
@@ -320,7 +408,7 @@
 
             index = 0;
 
-            while (audio === undefined || index < musicList.length) {
+            while (audio === undefined || index &lt; musicList.length) {
                 if (musicList[index].id === id) {
                     audio = musicList[index];
                     musicList.splice(index, 1);
@@ -329,13 +417,13 @@
             }
 
             if (audio === undefined) {
-                console.info('Warning! Sound not exists to be removed by gkSound.removeSound method.');
-                return {message: "Sound not exists.", code: -1};
+                console.info(&#x27;Warning! Sound not exists to be removed by gkSound.removeSound method.&#x27;);
+                return {message: &quot;Sound not exists.&quot;, code: -1};
             }
 
             audio.parentNode.removeChild(audio);
 
-            return {message: "Sound removed.", code: 0};
+            return {message: &quot;Sound removed.&quot;, code: 0};
         },
 
         addSoundListener: function(element) {
@@ -354,7 +442,7 @@
         attachToSoundEmitter: function(emitter, sound) {
             var i;
 
-            for (i = emitterList.length - 1; i >= 0; i--) {
+            for (i = emitterList.length - 1; i &gt;= 0; i--) {
                 if (emitterList[i].id === emitter) {
                     emitterList[i].sounds.push(document.getElementById(sound));
                     break;
@@ -368,7 +456,7 @@
          * @method playSound
          * @param {String} id Id of Audio element.
          * @param {Boolean} override Boolean default false. Set to true to play sound from start.
-         * @param {Function} callback Callbacks return an Object like { message:"Sound played.", code:0 }. Code will be -1 if sound not played.
+         * @param {Function} callback Callbacks return an Object like { message:&quot;Sound played.&quot;, code:0 }. Code will be -1 if sound not played.
          * @param {Boolean} ignoreMute Boolean default false. Set to true to play sound ignoring mute settings.
          */
         playSound: function(id, override, onComplete, ignoreMute) {
@@ -382,9 +470,9 @@
                 },
 
                 onEnded = function() {
-                    element.removeEventListener('ended', onEnded);
+                    element.removeEventListener(&#x27;ended&#x27;, onEnded);
                     element.playing = false;
-                    hasCallback({message: "Sound played.", code: 0});
+                    hasCallback({message: &quot;Sound played.&quot;, code: 0});
                 };
 
             if (isActive || ignoreMute) {
@@ -401,10 +489,10 @@
                 }
                 element.playing = true;
 
-                element.addEventListener('ended', onEnded, false);
+                element.addEventListener(&#x27;ended&#x27;, onEnded, false);
 
             } else {
-                hasCallback({message: "Sound was muted.", code: -1});
+                hasCallback({message: &quot;Sound was muted.&quot;, code: -1});
             }
         },
 
@@ -416,7 +504,7 @@
         resumeAllSounds: function() {
             var i;
 
-            for (i = pauseList.length - 1; i >= 0; i--) {
+            for (i = pauseList.length - 1; i &gt;= 0; i--) {
                 document.getElementById(pauseList[i]).play();
             }
         },
@@ -444,7 +532,7 @@
                 pauseList.push(currentTrack);
             }
 
-            for (i = soundList.length - 1; i >= 0; i--) {
+            for (i = soundList.length - 1; i &gt;= 0; i--) {
                 gkSound.pauseSound(soundList[i].id);
                 if (document.getElementById(soundList[i].id).playing === true) {
                     pauseList.push(soundList[i].id);
@@ -482,7 +570,7 @@
                 currentTrack = null;
             }
 
-            for (i = soundList.length - 1; i >= 0; i--) {
+            for (i = soundList.length - 1; i &gt;= 0; i--) {
                 gkSound.stopSound(soundList[i].id);
             }
         },
@@ -496,7 +584,7 @@
             var i;
 
             if (isActive) {
-                for (i = musicList.length - 1; i >= 0; i--) {
+                for (i = musicList.length - 1; i &gt;= 0; i--) {
                     document.getElementById(musicList[i].id).play();
                     currentTrack = musicList[i].id;
                 }
@@ -521,14 +609,14 @@
          * @method toggleSounds
          */
         toggleSounds: function() {
-            if (localStorage.musicStatus === "mute") {
+            if (localStorage.musicStatus === &quot;mute&quot;) {
                 isActive = true;
-                localStorage.musicStatus = "on";
+                localStorage.musicStatus = &quot;on&quot;;
                 changeMuteButtonText(true);
                 gkSound.playTrack();
             } else {
                 isActive = false;
-                localStorage.musicStatus = "mute";
+                localStorage.musicStatus = &quot;mute&quot;;
                 changeMuteButtonText(false);
                 gkSound.stopAllSounds();
             }
@@ -549,12 +637,12 @@
 
             globalVolume = value;
 
-            for (i = soundList.length - 1; i >= 0; i--) {
+            for (i = soundList.length - 1; i &gt;= 0; i--) {
                 vol = isRelative === true ? soundList[i].volume * globalVolume : value;
                 soundList[i].volume = vol;
             }
 
-            for (i = musicList.length - 1; i >= 0; i--) {
+            for (i = musicList.length - 1; i &gt;= 0; i--) {
                 vol = isRelative === true ? musicList[i].volume * globalVolume : value;
                 musicList[i].volume = vol;
             }
@@ -597,3 +685,22 @@
         }
     }
 })();
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
